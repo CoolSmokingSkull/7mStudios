@@ -1,34 +1,33 @@
-// Interactive 3D logo using Three.js (placeholder)
-const logoCanvas = document.getElementById('logoCanvas');
-// TODO: Add Three.js rendering logic for 3D logo.
+// Mobile menu toggle
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const navMenu = document.getElementById('nav-menu');
 
-// Interactive sandbox
-const sandboxCanvas = document.getElementById('sandboxCanvas');
-const ctx = sandboxCanvas.getContext('2d');
-sandboxCanvas.width = sandboxCanvas.height = 500;
-
-let angle = 0;
-function drawSandbox() {
-    ctx.clearRect(0, 0, sandboxCanvas.width, sandboxCanvas.height);
-    ctx.save();
-    ctx.translate(sandboxCanvas.width / 2, sandboxCanvas.height / 2);
-    ctx.rotate(angle);
-    ctx.fillStyle = '#0ff';
-    ctx.fillRect(-50, -50, 100, 100);
-    ctx.restore();
-    angle += 0.01;
-    requestAnimationFrame(drawSandbox);
-}
-
-// Drag-and-drop functionality (example)
-let dragging = false;
-sandboxCanvas.addEventListener('mousedown', () => (dragging = true));
-sandboxCanvas.addEventListener('mouseup', () => (dragging = false));
-sandboxCanvas.addEventListener('mousemove', (e) => {
-    if (dragging) {
-        ctx.fillStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
-        ctx.fillRect(e.offsetX - 10, e.offsetY - 10, 20, 20);
-    }
+mobileMenuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
 });
 
-drawSandbox();
+// Scroll indicator
+window.addEventListener('scroll', () => {
+    const scrollIndicator = document.getElementById('scroll-indicator');
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const percentageScrolled = (window.scrollY / maxScroll) * 100;
+    scrollIndicator.style.width = `${percentageScrolled}%`;
+});
+
+// Interactive canvas color change
+const logoCanvas = document.getElementById('logoCanvas');
+const logoCtx = logoCanvas.getContext('2d');
+logoCanvas.width = 200;
+logoCanvas.height = 50;
+let colors = ['#0ff', '#f00', '#0f0', '#ff0', '#00f'];
+let colorIndex = 0;
+
+function drawLogo() {
+    logoCtx.fillStyle = colors[colorIndex];
+    logoCtx.fillRect(0, 0, logoCanvas.width, logoCanvas.height);
+}
+logoCanvas.addEventListener('click', () => {
+    colorIndex = (colorIndex + 1) % colors.length;
+    drawLogo();
+});
+drawLogo();

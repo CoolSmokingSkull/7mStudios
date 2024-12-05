@@ -1,14 +1,18 @@
+/* General styles */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     color: #fff;
-    background: #111;
+    background: linear-gradient(90deg, #111, #222);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    overflow-x: hidden;
 }
 header {
     position: sticky;
     top: 0;
     background: rgba(0, 0, 0, 0.9);
-    padding: 15px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,101 +23,104 @@ header .logo {
     align-items: center;
     gap: 10px;
     color: #0ff;
+    animation: glow 1.5s infinite alternate;
 }
-nav ul {
+header nav {
+    display: flex;
+    align-items: center;
+}
+#nav-menu {
     list-style: none;
     display: flex;
     gap: 20px;
 }
-nav ul li a {
+#nav-menu li a {
     color: #fff;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: all 0.3s;
 }
-nav ul li a:hover {
+#nav-menu li a:hover {
     color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 15px #0ff;
 }
-#hero {
-    height: 100vh;
-    background: linear-gradient(90deg, #111, #222);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    position: relative;
+#mobile-menu-toggle {
+    display: none;
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
 }
-#hero .grid-animation {
-    position: absolute;
+#scroll-indicator {
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(0deg, #0ff, #0ff 1px, transparent 2px);
-    animation: scroll 10s linear infinite;
-    z-index: -1;
-}
-#hero h2 {
-    font-size: 3em;
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-}
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #0ff;
-    text-decoration: none;
-    border: 2px solid #0ff;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
-}
-.button:hover {
+    height: 5px;
     background: #0ff;
-    color: #111;
+    width: 0;
+    z-index: 1000;
 }
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px;
+
+/* Hero section */
+.animated-text {
+    animation: typewriter 4s steps(40, end), blink 0.75s step-end infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #0ff;
 }
-.card {
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid #0ff;
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 0 10px #0ff;
-    transition: transform 0.3s;
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+    }
+    #nav-menu {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        text-align: center;
+    }
+    #nav-menu.active {
+        display: flex;
+    }
+    #mobile-menu-toggle {
+        display: block;
+    }
 }
-.card:hover {
-    transform: scale(1.1);
-}
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #000;
-    color: #fff;
-}
-footer .neon-heart {
-    color: #ff0;
-    animation: pulse 1.5s infinite;
-}
-@keyframes scroll {
+
+/* Keyframes */
+@keyframes glow {
     from {
-        transform: translateY(0);
+        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
     }
     to {
-        transform: translateY(-100%);
+        text-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
     }
 }
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
     }
     50% {
-        transform: scale(1.2);
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+@keyframes blink {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #0ff;
     }
 }
