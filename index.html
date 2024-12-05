@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7M Studios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <canvas id="logoCanvas"></canvas>
+            <h1>7M Studios</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#showcase">Showcase</a></li>
+                <li><a href="#sandbox">Sandbox</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="hero">
+            <div class="grid-animation"></div>
+            <h2>Welcome to the Future of Creativity</h2>
+            <p>Explore. Innovate. Create.</p>
+            <a href="#showcase" class="button">Explore Projects</a>
+        </section>
+        <section id="showcase">
+            <h2>PWA Showcase</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>PWA 1</h3>
+                    <p>A description of PWA 1</p>
+                </div>
+                <div class="card">
+                    <h3>PWA 2</h3>
+                    <p>A description of PWA 2</p>
+                </div>
+                <div class="card">
+                    <h3>PWA 3</h3>
+                    <p>A description of PWA 3</p>
+                </div>
+            </div>
+        </section>
+        <section id="sandbox">
+            <h2>Interactive Sandbox</h2>
+            <p>Experiment with drag-and-drop neon objects and enjoy mini-games!</p>
+            <div id="sandbox-area">
+                <canvas id="sandboxCanvas"></canvas>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 7M Studios | Designed with <span class="neon-heart">❤️</span></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

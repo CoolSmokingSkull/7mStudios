@@ -1,13 +1,12 @@
-// Placeholder for 3D logo using Three.js
+// Interactive 3D logo using Three.js (placeholder)
 const logoCanvas = document.getElementById('logoCanvas');
-// TODO: Add Three.js logo rendering.
+// TODO: Add Three.js rendering logic for 3D logo.
 
-// Placeholder for Sandbox Canvas
+// Interactive sandbox
 const sandboxCanvas = document.getElementById('sandboxCanvas');
 const ctx = sandboxCanvas.getContext('2d');
 sandboxCanvas.width = sandboxCanvas.height = 500;
 
-// Simple Animation Example
 let angle = 0;
 function drawSandbox() {
     ctx.clearRect(0, 0, sandboxCanvas.width, sandboxCanvas.height);
@@ -20,4 +19,16 @@ function drawSandbox() {
     angle += 0.01;
     requestAnimationFrame(drawSandbox);
 }
+
+// Drag-and-drop functionality (example)
+let dragging = false;
+sandboxCanvas.addEventListener('mousedown', () => (dragging = true));
+sandboxCanvas.addEventListener('mouseup', () => (dragging = false));
+sandboxCanvas.addEventListener('mousemove', (e) => {
+    if (dragging) {
+        ctx.fillStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+        ctx.fillRect(e.offsetX - 10, e.offsetY - 10, 20, 20);
+    }
+});
+
 drawSandbox();

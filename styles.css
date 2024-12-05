@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background: #111;
+}
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #0ff;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #0ff;
+}
+#hero {
+    height: 100vh;
+    background: linear-gradient(90deg, #111, #222);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+#hero .grid-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg, #0ff, #0ff 1px, transparent 2px);
+    animation: scroll 10s linear infinite;
+    z-index: -1;
+}
+#hero h2 {
+    font-size: 3em;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #0ff;
+    text-decoration: none;
+    border: 2px solid #0ff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+.button:hover {
+    background: #0ff;
+    color: #111;
+}
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #0ff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 10px #0ff;
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: scale(1.1);
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    color: #fff;
+}
+footer .neon-heart {
+    color: #ff0;
+    animation: pulse 1.5s infinite;
+}
+@keyframes scroll {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
